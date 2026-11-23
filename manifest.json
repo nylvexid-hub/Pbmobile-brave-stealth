@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "CHEAT PB MOBILE SAVE",
+  "version": "0.9.0",
+  "description": "Skeleton dan Chams untuk PBMobile, guard berbasis pola, tanpa jejak window/DOM.",
+  "permissions": ["debugger", "tabs", "storage"],
+  "host_permissions": ["https://pbmobile.app/*", "https://*.pbmobile.app/*"],
+  "background": { "service_worker": "worker.js" },
+  "action": { "default_title": "PemburuHS Brave", "default_popup": "popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["https://pbmobile.app/*", "https://*.pbmobile.app/*"],
+      "js": ["stealth.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://pbmobile.app/*", "https://*.pbmobile.app/*"],
+      "js": ["visuals.js"],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ]
+}
